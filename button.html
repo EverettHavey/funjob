@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Messages</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #d9534f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .message-box {
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Office Status Report</h1>
+        <p>Click the button below to receive an important office message. ✉️</p>
+        <button id="messageButton">Get New Message</button>
+        <div class="message-box">
+            <p id="officeMessage">Click the button to start...</p>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "You're Fired!",
+            "You're Promoted! 🎉",
+            "The coffee machine is broken. ☕️",
+            "Please attend the mandatory meeting at 3 PM.",
+            "Casual Friday is canceled.",
+            "The printer is out of ink.",
+            "Your performance review is next week.",
+            "Donut day is today! 🍩"
+        ];
+
+        const messageButton = document.getElementById('messageButton');
+        const officeMessage = document.getElementById('officeMessage');
+
+        messageButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            officeMessage.textContent = messages[randomIndex];
+            updateMessageStyle(messages[randomIndex]);
+        });
+
+        function updateMessageStyle(message) {
+            const messageBox = document.querySelector('.message-box');
+            if (message.includes("Fired")) {
+                messageBox.style.color = '#d9534f';
+                messageBox.style.fontSize = '2em';
+            } else if (message.includes("Promoted")) {
+                messageBox.style.color = '#5cb85c';
+                messageBox.style.fontSize = '2em';
+            } else {
+                messageBox.style.color = '#333';
+                messageBox.style.fontSize = '1.5em';
+            }
+        }
+    </script>
+</body>
+</html>
